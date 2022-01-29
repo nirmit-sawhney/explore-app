@@ -1,0 +1,28 @@
+<%-include('../partials/header') %>
+<%-include('../partials/navbar') %>
+<main class="container">
+    <h1 id="head" class="display-6">Edit the Product</h1>
+    <form action="/products/<%=product.id%>?_method=PATCH" method="POST">
+        <div class="form-group">
+            <label for="name" class="form-label">Name of Product:</label><br>
+            <input type="text" name="name" class="form-control" value="<%=product.name%>">
+        </div><br>
+        <div class="form-group">
+            <label for="price" class="form-label">Price:</label><br>
+            <div class="input-group">
+                <span class="input-group-text" id="price-icon">&#x20B9</span>
+                <input type="text" name="price" class="form-control" aria-describedby="price-icon" value="<%=product.price%>">
+            </div>
+        </div><br>
+        <div class="form-group">
+            <label for="image" class="form-label">Image:</label><br>
+            <input type="text" name="image" class="form-control" value="<%=product.img%>">
+        </div><br>
+        <div class="form-group">
+            <label for="desc" class="form-label">Description:</label><br>
+            <textarea name="desc" id="desc" rows="5" cols="40"><%=product.desc%></textarea>
+        </div><br>
+        <button class="btn btn-success" type="submit">Update</button>
+    </form>
+</main>
+<%-include('../partials/footer') %>

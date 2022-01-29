@@ -1,0 +1,281 @@
+body{
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
+}
+#loader {
+    border: 12px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 12px solid #444444;
+    background-color:black;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+}
+  
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+  
+.loadcenter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+main{
+    margin-bottom: 20px;
+}
+nav{
+    background-color: white;
+}
+#logo ,#offcanvasExampleLabel{
+    font-family: 'Syncopate', sans-serif;
+    letter-spacing: 3px;
+}
+.card img{
+    padding: 10px;
+    height:300px;
+}
+main{
+    margin-top: 70px;
+}
+.cart-item{
+    border-bottom: 1px solid #ccc;
+    padding:16px;
+    height:100px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cart-item img{
+    height: 100%;
+    width: 100px;
+}
+#cart-head{
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.reviews{
+    box-shadow: 0px 0px 1px 1px rgb(128, 124, 124);
+    border-radius: 5px;
+    padding:8px;
+}
+#cart-summary{
+    border-radius: 10px;
+    padding:16px;
+    background-color:#e9ecef;
+}
+.summary-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#total-checkout{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.responsive{
+    max-width: 100%;
+    height:auto;
+}
+.home-div{
+    padding:30px;
+    margin-top: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: black;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.img-back{
+    background: rgba(0, 0, 0, 3);
+}
+.carousel-item .car1img{
+    opacity: 0.5;
+}
+.carousel-caption span{
+    font-size: x-large;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.img-poster{
+    margin-top: 20px;
+    height:auto;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+.img-poster h4{
+    background-color:black;
+    color: white;
+    padding: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.img-poster img{
+    width: 100%;
+    height: 100%;
+}
+.products-link{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.products-link span{
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-right: 20px;
+    text-align: center;
+}
+a:hover{
+    color:black;
+}
+.modal-body{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+.social-icons{
+    margin-right:15px;
+}
+footer{
+    width: 100%;
+    color:white;
+    margin-top: auto;
+}
+#site-footer{
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#copy-footer{
+    padding:20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+footer h5{
+    font-weight: bolder;
+    letter-spacing: 2px;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+footer ul li{
+    letter-spacing: 2px;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+footer a{
+    color:white;
+}
+.log-signup-form{
+    margin: 2em 0;
+}
+.field{
+    display: flex;
+    flex-flow: column-reverse;
+    margin-bottom: 2em;
+}
+.login-label,.login-inp{
+    transition:all 0.2s;
+    touch-action: manipulation;
+}
+.login-inp{
+    font-size: 1rem;
+    border: 0;
+    border-bottom: 2px solid #ccc;
+    -webkit-appearance: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding:10px 0px;
+    cursor: text;
+}
+.login-label{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+}
+.login-inp:focus{
+    outline: 0;
+    border-bottom: 2px solid #666;
+}
+.login-inp:placeholder-shown+.login-label{
+    cursor: text;
+    max-width: 66.66%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform-origin: left bottom;
+    transform: translate(0,2.125rem) scale(1.5);
+}
+::-webkit-input-placeholder{
+    opacity: 0;
+    transition: inherit;
+}
+.login-inp:focus::-webkit-input-placeholder{
+    opacity: 1;
+}
+.login-inp:not(:placeholder-shown)+.login-label,.login-inp:focus+.login-label{
+    transform: translate(0,0) scale(1);
+    cursor: pointer;
+} 
+.log-signup{
+    border:1px solid black;
+    padding:20px;
+    display: flex;
+    align-items: center;
+    overflow-y:scroll;
+    flex-direction:column;
+    height:80vh;
+}
+.log-view{
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 80vh;
+}
+.logo-sub{
+    letter-spacing: 5px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color:#f8eeee;
+}
+#offbtn,.offcanvas{
+    display: none;
+}
+@media only screen and (max-width:600px) {
+    .carousel-caption span{
+        font-size: x-small;
+    }
+    .carousel-caption p{
+        font-size: xx-small;
+    }
+    .log-view{
+        height:20vh;
+    }
+    #site-footer{
+        align-items:flex-start;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}
+@media only screen and (max-width:991px){
+    #offbtn{
+        display: inline;
+        float: right;
+    }
+    .offcanvas{
+        display: block;
+    }
+}

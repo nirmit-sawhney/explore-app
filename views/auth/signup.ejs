@@ -1,0 +1,67 @@
+<!-- <%-include('../partials/header') %>
+<%-include('../partials/navbar') %>
+
+<main class="container">
+    <%-include('../partials/flash') %>
+    <div class="row">
+        <h1 class="head display:5">Sign Up</h1>
+        <form action="/signup" method="POST">
+            <div class="form-group">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" class="form-control" name="username" minlength="4" maxlength="15" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" minlength="4" maxlength="10" placeholder="Enter Password">
+            </div>
+            <button type="submit" class="btn btn-success">Sign Up</button>
+        </form>
+    </div>
+</main>
+
+<%-include('../partials/footer') %> -->
+
+<%-include('../partials/header') %>
+<%-include('../partials/navbar') %>
+
+<main class="container">
+    <%-include('../partials/flash') %>
+        <div class="row">
+            <div class="col-lg-6 mx-auto log-view">
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <span class="navbar-brand" id="logo">eXpl<i class="fas fa-shopping-bag"></i>re</span>
+                    <p class="logo-sub">FIND YOUR WAY</p>
+                </div>
+            </div>
+            <div class="col-lg-6 mx-auto log-signup">
+             <form action="/signup" method="POST" class="log-signup-form" enctype="multipart/form-data">
+                 <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Signup</h1>
+                 <hr>
+                <div class="login-div">
+                    <div class="field">
+                        <input type="text" id="username" name="username" placeholder="Enter Username" class="login-inp">
+                        <label for="username" class="login-label">Username</label>
+                    </div>
+                    <div class="field">
+                       <input type="password" id="password" name="password" placeholder="Enter Password" class="login-inp">
+                       <label for="password" class="login-label">Password</label>
+                    </div>
+                    <div class="field">
+                        <input type="email" id="email" name="email" placeholder="Enter Email" class="login-inp">
+                        <label for="email" class="login-label">Email</label>
+                     </div>
+                     <div class="field">
+                        <input type="file" id="p-image" name="p-image" class="login-inp">
+                        <label for="p-image" class="login-label">Upload Profile Picture</label>
+                     </div>
+                    <button type="submit" class="btn btn-primary mt-2">Signup</button>
+                </div>
+             </form>
+            </div>
+        </div>
+</main>
+<%-include('../partials/footer') %>

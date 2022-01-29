@@ -1,0 +1,68 @@
+<%-include('../partials/header') %>
+<%-include('../partials/navbar') %>
+
+<main class="container">
+    <%-include('../partials/flash') %>
+    <div class="row">
+        <div class="col-lg-4 mx-auto mb-2">
+            <div class="card">
+                <img src="<%=product.img%>" class="card-img-top" alt=".." >
+                <div class="card-body">
+                    <h4 class="card-title"><%=product.name%></h4>
+                    <p class="card-text"><%=product.desc%></p>
+                    <h5 class="card-title">&#x20B9 <%=product.price%></h5>
+                    <a href="/user/cart" class="btn btn-outline-primary">Buy</a>
+                    <form action="/cart/<%=product.id%>/add" method="POST" class="d-inline-block">
+                        <button class="btn btn-secondary" id="add" type="submit">Add to Cart</button>
+                    </form>
+                    <%if(currentUser.username=="Nirmit Sawhney"){%>
+                        <a href="/products/<%=product.id%>/edit" class="btn btn-info">Edit</a>
+                    <form class="d-inline-block" action="/products/<%=product.id%>?_method=Delete" method="POST">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 mx-auto mb-2" id="review-section">
+            <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Leave a Review</h1>
+            <div class="mt-2">
+                <form action="/products/<%=product.id%>/review" method="POST">
+                    <fieldset class="starability-basic mt-2">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="rating" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="rating" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="rating" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="rating" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="rating" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="comment" class="form-label"></label>
+                        <textarea name="comment" id="comment" class="form-control" placeholder="Your Comments.."></textarea>
+                    </div>
+                    <div class="form-group mt-2">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <%for(let review of product.reviews){%>
+                    <div class="reviews mt-2">
+                        <p class="starability-result" data-rating="<%=review.rating%>">
+                            Rated: <%=review.rating%> stars
+                        </p>
+                        <span style="color:gray">By : <%=review.user%></span>
+                        <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><%=review.comment%></p>
+                    </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%-include('../partials/footer') %>

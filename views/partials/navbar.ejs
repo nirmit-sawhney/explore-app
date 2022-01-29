@@ -1,0 +1,106 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+  <div class="container">
+    <span class="navbar-brand" id="logo">eXpl<i class="fas fa-shopping-bag"></i>re</span>
+    <button style="border: none;background-color: transparent;cursor: pointer;" id="offbtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" data-bs-backdrop="false" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <span class="offcanvas-title" id="offcanvasExampleLabel">eXpl<i class="fas fa-shopping-bag"></i>re</span>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <%if(!currentUser){%>
+          <ul style="list-style-type: none;">
+            <hr>
+            <li><a href="/">Home</a></li>
+            <hr>
+            <li><a href="/products">Products</a></li>
+            <hr>
+            <li><a class="btn btn-success text-white" href="/login">Login/Signup</a></li>
+          </ul>
+        <%}else{%>
+          <ul style="list-style-type: none;">
+            <li>
+              <%if(currentUser.profile){%>
+                <div style="display: flex;flex-direction: row; align-items: center; justify-content:flex-start;">
+                  <img src="../uploads/<%=currentUser.profile%>" class="rounded-circle img-fluid" alt="profile-pic" width="40"/>
+                  <p style="font-size: large;font-weight: bold; margin-left: 10px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><%=currentUser.username%></p>
+                </div>
+              <%}else{%>
+                <img src="../assets/images/avatar.png" class="rounded-circle img-fluid" alt="profile-pic" width="40"/>
+                <p style="font-size: large;font-weight: bold; margin-left: 10px;"><%=currentUser.username%></p>
+              <%}%>
+            </li>
+            <hr>
+            <li><a href="/">Home</a></li>
+            <hr>
+            <li><a href="/products">Products</a></li>
+            <hr>
+            <%if(currentUser.username=="Nirmit Sawhney"){%>
+              <li><a href="/products/new">New</a></li>
+              <hr>
+            <%}%>
+            <li>
+              <a href="/user/cart"  type="button" class="btn position-relative">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="mt-2 position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  <%= currentUser.cart.length %> 
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </a>
+            </li>
+            <hr>
+            <li><a class="btn btn-warning btn-block" href="/logout">Logout</a></li>
+          </ul>
+        <%}%>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav nav-tabs mb-2 mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products">Products</a>
+        </li>
+        <%if(currentUser && currentUser.username=="Nirmit Sawhney"){%>
+        <li class="nav-item">
+          <a class="nav-link" href="/products/new">New</a>
+        </li>
+        <%}%>
+      </ul>
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0"> 
+
+        <%if(!currentUser){%>
+          <li class="nav-item">
+            <a class="nav-link btn btn-success text-white" href="/login">Login/Signup</a>
+          </li>
+        <%}else{%>
+          <li class="nav-item" style="margin-right: 20px;">
+           
+            <a href="/user/cart"  type="button" class="btn position-relative nav-link">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="mt-2 position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <%= currentUser.cart.length %> 
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </a>
+          </li>
+          <li class="nav-item" style="margin-right: 20px;">
+            <%if(currentUser.profile){%>
+              <img src="../uploads/<%=currentUser.profile%>" class="rounded-circle img-fluid" alt="profile-pic" width="40"/>
+            <%}else{%>
+              <img src="../assets/images/avatar.png" class="rounded-circle img-fluid" alt="profile-pic" width="40"/>
+            <%}%>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-warning" href="/logout">Logout</a>
+          </li>
+        <%}%>
+
+      </ul>
+    </div>
+  </div>
+</nav>

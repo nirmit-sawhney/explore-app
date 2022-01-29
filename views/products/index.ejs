@@ -1,0 +1,51 @@
+<%-include('../partials/header') %>
+<%-include('../partials/navbar') %>
+
+<main class="container">
+    <%-include('../partials/flash')%>
+    <div class="row">
+        <a href="/products/electronics">
+            <div class="products-link" style="background-color: #d8e2dc">
+                <span>Mobile & Electronics</span>
+                <div class="col-lg-6">
+                   <img src="/assets/images/electronics.png" class="responsive" alt="...">
+                </div>
+            </div>
+        </a>
+        <a href="/products/home">
+            <div class="products-link" style="background-color:#f8edeb;padding: 0px;">
+                <div class="col-lg-4" style="margin-left: 20px;">
+                    <img src="/assets/images/home.png" class="responsive" alt="...">
+                 </div>
+                <span>Home Essentials</span>
+            </div>
+        </a>
+  
+  <div class="modal fade" id="selectfashion" tabindex="-1" role="dialog" aria-labelledby="Please Select Fashion" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="selectfashionhead">Select Fashion</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="border: none;background: transparent;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+    <a href="/products/menfashion" class="btn btn-secondary btn-lg">Men <i class="fas fa-male"></i></a>
+    <a href="/products/womenfashion" class="btn btn-secondary btn-lg">Women <i class="fas fa-female"></i></a>    
+</div>
+      </div>
+    </div>
+  </div>
+  <a href="#" data-bs-toggle="modal" data-bs-target="#selectfashion">
+            <div class="products-link" style="background-color: #d8f3dc;">
+                <span>Fashion</span>
+                <div class="col-lg-4">
+                   <img src="/assets/images/fashion.png" class="responsive" alt="...">
+                </div>
+            </div>
+    </a>
+    </div>
+</main>
+
+<%-include('../partials/footer') %>

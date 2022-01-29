@@ -1,0 +1,84 @@
+<%-include('../partials/header') %>
+<%-include('../partials/navbar') %>
+
+<main class="container">
+    <%-include('../partials/flash') %>
+    <hr>
+    <div class="row">
+        <div id="cart-head">
+            <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Shopping Cart</h1>
+            <span style="color: gray; font-size: x-large;"><%=user.cart.length%> items</span>
+        </div>
+        <hr>
+        <%for(let item of user.cart){%>
+            <div class="cart-item col-*-12">
+                <img src="<%=item.img%>" alt="..." class="rounded circle">
+                <p><span style="font-size: x-large; font-family: Georgia, 'Times New Roman', Times, serif;"><%=item.name%></span><br><span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:gray">&#x20B9 <%= item.price %></span></p>
+                <form action="/cart/<%=item._id%>/remove?_method=DELETE" method="POST">
+                    <button style="border: none; background:transparent;" class="fas fa-trash"></button>
+                </form>
+            </div>
+        <%}%>
+    </div>
+    <%if(user.cart.length>0){%>
+        <div id="cart-summary" class="col-*-12">
+            <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Summary</h3>
+            <hr>
+            <%let amount=0%>
+            <%for(let item of user.cart){%>
+                <%amount+=item.price%>
+                <div class="summary-item">
+                    <span style="font-size: larger; font-family: Georgia, 'Times New Roman', Times, serif;"><%=item.name%></span>
+                    <span style="font-size: larger;">&#x20B9 <%=item.price%></span>
+                </div>
+            <%}%>
+            <hr>
+            <div id="total-checkout" class="mt-2">
+                <span>Total Value : &#x20B9 <%=amount%></span>
+                <span>GST(+5 %) : &#x20B9 <%=((amount/100)*5).toFixed(2)%></span>
+                <%let shipping=0%>
+                <%if(amount<1000){%>
+                    <%shipping=50%>
+                    <span>Shipping : &#x20B9 <%=shipping%></span>
+                <%}else{%>
+                    <span>Shipping : <span style="color: green;">FREE</span></span>
+                <%}%>
+                <%let subtotal=(amount+=((amount/100)*5)+shipping).toFixed(2)%>
+                <span class="mb-2" style="font-family:Verdana, Geneva, Tahoma, sans-serif;font-size: larger;">Subtotal: <b>&#x20B9 <span id="total-pay-amount"><%=subtotal%></span></b></span>
+                <div class="modal fade" id="checkout" tabindex="-1" role="dialog" aria-labelledby="Checkout to Proceed" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="checkouthead">Check out</h5>
+                          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="border: none;background: transparent;">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/payment/<%=subtotal*100%>" method="POST">
+                                <input type="text" readonly class="form-control" value="<%=user.username%>"><br>
+                                <input type="number" class="form-control" id="pin" name="pin" placeholder="Enter Pincode"><br>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address"><br>
+                                <input type="tel" class="form-control" id="tel" name="tel" placeholder="Enter Mobile Number"><br>
+                                <input type="text" readonly class="form-control" value="Subtotal: &#x20B9 <%=subtotal%>"><br>
+                                <script src="//checkout.stripe.com/v2/checkout.js"
+                                class="stripe-button"
+                                data-key="<%=key%>"
+                                data-amount="<%=subtotal*100%>",
+                                data-currency="inr"
+                                data-name="eXplore"
+                                data-description="Buy Products"
+                                data-locale="auto">
+                                </script><br>
+                                <small class="form-text text-muted">*Considering safety, <b>Cash on Delivery</b> is not available!</small>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#checkout">Checkout</a>
+            </div>
+        </div>
+    <%}%>
+</main>
+<%-include('../partials/footer') %>
