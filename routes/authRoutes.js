@@ -1,5 +1,6 @@
 const express=require('express');
 const router=express.Router();
+const path = require('path');
 const passport=require('passport');
 const User=require('../models/user');
 const multer=require('multer');
@@ -10,7 +11,8 @@ const Storage=multer.diskStorage({
         cb(null,'./public/uploads/');
     },
     filename:function(req,file,cb){
-        cb(null,file.originalname);
+        cb(null,file.fieldname + '_' + Date.now() 
+        + path.extname(file.originalname));
     }
 })
 
@@ -31,7 +33,7 @@ router.post('/signup',upload,async(req,res)=>{
         res.redirect('/products');
     }
     catch(e){
-        req.flash('error',e.message);
+        req.flash('error',"OOPS, SOMETHING WENT WRONG");
         res.redirect('/signup');
     }
 });

@@ -25,7 +25,13 @@ const ProductRoutes=require('./routes/productRoutes');
 const AuthRoutes=require('./routes/authRoutes');
 const cartRoutes=require('./routes/cartRoutes');
 
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL)
+.then(()=>{
+    console.log("DB CONNECTED");
+})
+.catch((err)=>{
+    console.log(err.message);
+})
 
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));

@@ -3,6 +3,12 @@ body{
     display: flex;
     flex-direction: column;
 }
+.profile-icon{
+    border-radius: 50%;
+    height:40px;
+    width:40px;
+    object-fit: cover;
+}
 #loader {
     border: 12px solid #f3f3f3;
     border-radius: 50%;
